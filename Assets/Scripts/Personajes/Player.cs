@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     public float moveSpeed;
     PlayerController pController;
     GunController gController;
+    public int hpActual;
 
     // Use this for initialization
     void Start()
@@ -23,6 +24,10 @@ public class Player : MonoBehaviour
         pController = GetComponent<PlayerController>();
         gController = FindObjectOfType<GunController>();
         viewCamera = FindObjectOfType<Camera>();
+        if (hpActual == 0)
+        {
+            Debug.LogError("OYE WN EL HP ESTÁ EN 0. ARRÉGLALO");
+        }
     }
 
     // Update is called once per frame
@@ -54,5 +59,10 @@ public class Player : MonoBehaviour
         {
             gController.Shoot();
         }
+    }
+
+    public void TakeDamage(int damageRecibido)
+    {
+        hpActual = hpActual - damageRecibido;
     }
 }

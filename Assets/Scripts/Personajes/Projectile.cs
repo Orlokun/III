@@ -26,4 +26,15 @@ public class Projectile : MonoBehaviour
         Rigidbody2D rigid = gameObject.GetComponent<Rigidbody2D>();
         rigid.velocity = transform.up * 10;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        GameObject incomingObject = collision.gameObject;
+        if(incomingObject.GetComponent<EnemyController>())
+        {
+            // Perder Vida
+        }
+    }
+
+
 }
